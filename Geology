@@ -1,0 +1,82 @@
+# import required modules and files, nltk = natural language toolkit, 2 csv files: geology and AZusages,
+# pandas = data structure
+import nltk
+from nltk.tokenize import word_tokenize
+import pandas as pd
+import os
+import numpy as np
+import csv
+
+
+# function that creates a series for comparison
+def create_series(x, y):
+    s = x[y]
+    return s
+
+
+# notes = g["notes"]
+
+# function that creates a removal of the text after the (
+def remove_special(x):
+    newlist = []
+    for row in usage:
+        new = row.split("(")[0]
+        newlist.append(new)
+        return (new)
+
+
+# wrong
+
+# function that tokenizes the notes section
+def tokens():
+    tnotes = []
+    for row in notes:
+        tokens = word_tokenize(row)
+        tnotes.append(tokens)
+        return (tokens)
+
+
+# wrong
+
+########need help here#########
+# def loop():
+#     for i nop_notes:
+#         #if statement and outout goes here?
+
+#         for i in nop_usage:
+#             i++
+#            )
+#        )
+
+########need help here#########
+
+
+########need help here#########
+# def for the output file
+# def export():
+# if nop_usage == nop_notes:
+#     geo = nlp.annotate(text, properties={
+#         'outputFormat': 'json',
+#     })
+#     file_loc = (r'C:\Users\rmartinez\Downloads\') + file_name + 'geo'
+#     with open(file_loc,'w+, encoding='utf8') as out_file:
+#               json.dump(geo, out_file)
+
+#         (g."symbol", g."Unit")
+########need help here#########
+
+
+# I assign variable g_list and f_list to pull in two csv files and convert them into pandas
+if __name__ == '__main__':
+    g_list = open(r'C:\Users\rmartinez\Downloads\geology.csv')
+    g = pd.read_csv(g_list, nrows=4842, header='infer')
+    # After reading the file in, I create a variable that passes g_list into the "create series" function above.
+    # The function takes in the file g and specifies the notes column in the csv (x,y)
+    # This is repeated for f_list and the usage variable below.
+    notes = create_series(g, "notes")
+
+    f_list = open(r'C:\Users\rmartinez\Downloads\azformations.csv')
+    f = pd.read_csv(f_list, nrows=848, header='infer')
+    usage = create_series(f, "Usage")
+    nop_usage = remove_special(usage)
+    # See comment under g = pd.read_csv..
