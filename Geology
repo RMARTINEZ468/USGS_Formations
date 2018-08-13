@@ -18,24 +18,24 @@ def create_series(x, y):
 
 # function that creates a removal of the text after the (
 def remove_special(x):
+    cleansplit = usage.str.split("(")
     newlist = []
-    for row in usage:
-        new = row.split("(")[0]
-        newlist.append(new)
-        return (new)
+    # newlist holding for cleaned usage formation "Alder XYZ" (without (AZ))
+    for i in cleansplit:
+        j = i[0].strip()
+        # i[0] is the first index in the clean split series
+        newlist.append(j)
+    print(newlist)
+    return (newlist)
 
 
-# wrong
-
-# function that tokenizes the notes section
-def tokens():
-    tnotes = []
-    for row in notes:
-        tokens = word_tokenize(row)
-        tnotes.append(tokens)
-        return (tokens)
-
-
+# # function that tokenizes the notes section
+# def tokens():
+#     tnotes = []
+#     for row in notes:
+#         tokens = word_tokenize(row)
+#         tnotes.append(tokens)
+#         return (tokens)
 # wrong
 
 ########need help here#########
@@ -47,7 +47,6 @@ def tokens():
 #             i++
 #            )
 #        )
-
 ########need help here#########
 
 
@@ -80,3 +79,5 @@ if __name__ == '__main__':
     usage = create_series(f, "Usage")
     nop_usage = remove_special(usage)
     # See comment under g = pd.read_csv..
+
+# print(newlist)
